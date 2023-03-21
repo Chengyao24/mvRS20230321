@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Json</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<button>execute</button>
+	<div id="msg"></div>
+	<script>
+		function result(data) {
+			$("#msg").html(data);
+		}
+		function execute() {
+			//alert('execute');      
+			var dataJSON = {
+				"firstName" : "Mary",
+				"lastName" : "Hayden",
+				"rollNumber" : 10,
+				"school" : "Sunny Valley",
+				"standard" : "One"
+			};
+			 $.ajax({
+				    url: "api/student/data/post",
+				    data: JSON.stringify(dataJSON),
+				    type: "POST",
+				    dataType: "text", // return data type
+				    contentType: "application/json;charset=utf-8", 
+				    success: function(returnData){
+				    	result(returnData);
+				    },
+				    error: function(xhr, ajaxOptions, thrownError){
+				        console.log(xhr.status);
+				        console.log(thrownError);
+				    }
+				});
+			
+		}
+		function start() {
+			$("button").click(execute);
+		}
+		$(document).ready(start);
+	</script>
+</body>
+</html>

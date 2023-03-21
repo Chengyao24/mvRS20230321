@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User Form</title>
+</head>
+<body>
+<form action="api/customers" method="post" >
+    <h2>
+        Name  <input type="text" name="name" /><br/>
+        Address <input type="text" name="address" /><br/>
+        Phone Number <input type="text" name="phone-number" /><br/>
+        <input type="submit" value="Submit" />
+    </h2>
+</form>
+<form action="api/customers" method="get" id="myForm2" >
+    <h2>
+        CustomerID  <input type="text" id="id" /><br/>        
+        <input type="submit" value="Submit" />
+    </h2>
+</form>
+<script>
+function check(){
+	frm2.action="api/customers/"+document.getElementById('id').value;
+	frm2.submit();
+	
+}
+var frm2=document.getElementById('myForm2');
+frm2.addEventListener('submit',check);
+</script>
+</body>
+</html>
